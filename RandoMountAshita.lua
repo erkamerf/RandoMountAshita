@@ -10,16 +10,10 @@ function SummonRandomMount()
     -- Initialize an empty table to store the player's mounts
     local mounts = {}
 
-    -- Get the number of key items the player has
-    -- TODO: This KeyItems bit is wrong; we never find key items
-    if AshitaCore:GetDataManager():GetPlayer().KeyItems == nil then
-        print("KeyItems not found.")
-        return
-    end
-    
-    local numKeyItems = AshitaCore:GetDataManager():GetPlayer().KeyItems.Max
-    local keyItems = AshitaCore:GetDataManager():GetPlayer().KeyItems
-    
+    -- TODO: This is what FindAll uses
+    local inventory = AshitaCore:GetDataManager():GetInventory();
+    local resources = AshitaCore:GetResourceManager();
+
     -- Iterate through all the key items the player has
     for i = 0, numKeyItems - 1 do
         -- Check if the key item is a mount

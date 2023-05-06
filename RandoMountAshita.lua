@@ -5,7 +5,7 @@ _addon.author   = 'Harissa';
 _addon.name     = 'randomount';
 _addon.version  = '0.0.0';
 
-WindowerKeyItems = require('windower.key_items')
+MountList = require('mounts')
 
 -- Define a function to pick a random mount and summon it
 function SummonRandomMount()
@@ -13,21 +13,11 @@ function SummonRandomMount()
     local mounts = {}
 
     -- TODO: This is what Find uses
-    for _, key_item in pairs(WindowerKeyItems) do
+    for _, key_item in pairs(MountsList) do
         if AshitaCore:GetDataManager():GetPlayer():HasKeyItem(key_item.id) then
             table.insert(mounts, key_item.id)
         end
     end
-
-    -- -- Iterate through all the key items the player has
-    -- for i = 0, numKeyItems - 1 do
-    --     -- Check if the key item is a mount
-    --     -- TODO: We don't know if these hex values are correct
-    --     if (keyItems[i] >= 0x7E9 and keyItems[i] <= 0x803) then
-    --         -- Add the mount to the table
-    --         table.insert(mounts, keyItems[i])
-    --     end
-    -- end
 
     -- Check if the player has any mounts
     if (#mounts > 0) then

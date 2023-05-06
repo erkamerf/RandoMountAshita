@@ -19,7 +19,7 @@ function SummonRandomMount()
     local mounts = {}
 
     -- TODO: This is what Find uses
-    for _, key_item in pairs(MountsList) do
+    for _, key_item in pairs(MountList) do
         if AshitaCore:GetDataManager():GetPlayer():HasKeyItem(key_item.id) then
             table.insert(mounts, key_item.id)
         end
@@ -32,7 +32,8 @@ function SummonRandomMount()
         local mountId = mounts[mountIndex]
 
         -- Summon the mount
-        AshitaCore:GetChatModule():SendCommand('/mount '..mountId, 1)
+        -- TODO: GetChatModule() isn't real
+        AshitaCore:GetChatManager():QueueCommand('/mount '..MountList[mountId].en, 1)
     else
         -- Notify the player that they have no mounts
         print("You have no mounts.")

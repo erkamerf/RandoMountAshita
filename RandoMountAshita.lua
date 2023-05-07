@@ -3,7 +3,7 @@
 --Original created June 1, 2022
 _addon.author   = 'Harissa';
 _addon.name     = 'randomount';
-_addon.version  = '0.0.0';
+_addon.version  = '1.0.0';
 
 MountList = require('mounts')
 
@@ -18,7 +18,6 @@ function SummonRandomMount()
     -- Initialize an empty table to store the player's mounts
     local mounts = {}
 
-    -- TODO: This is what Find uses
     for _, key_item in pairs(MountList) do
         if AshitaCore:GetDataManager():GetPlayer():HasKeyItem(key_item.id) then
             table.insert(mounts, key_item.id)
@@ -32,7 +31,7 @@ function SummonRandomMount()
         local mountId = mounts[mountIndex]
 
         -- Summon the mount
-        s = filter_name(MountList[mountId].en)
+       local s = filter_name(MountList[mountId].en)
         AshitaCore:GetChatManager():QueueCommand('/mount "'..s..'"', 1)
     else
         -- Notify the player that they have no mounts
@@ -40,10 +39,11 @@ function SummonRandomMount()
     end
 end
 
-function filter_name(s)
-    s, _ = string.gsub(s, '♪', '')
-    s, _ = string.gsub(s, ' companion', '')
+function filter_name(name)
+    local s, _ = string.gsub(name, ' companion', '')
     s, _ = string.gsub(s, ' whistle', '')
+    s, _ = string.gsub(s, ' key', '')
+    s, _ = string.gsub(s, '♪', '')
     return s
 end
 

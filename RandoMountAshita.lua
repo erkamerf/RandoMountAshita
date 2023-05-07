@@ -3,7 +3,7 @@
 --Original created June 1, 2022
 _addon.author   = 'Harissa';
 _addon.name     = 'randomount';
-_addon.version  = '0.0.0';
+_addon.version  = '1.0.0';
 
 MountList = require('mounts')
 

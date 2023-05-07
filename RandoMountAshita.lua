@@ -32,12 +32,19 @@ function SummonRandomMount()
         local mountId = mounts[mountIndex]
 
         -- Summon the mount
-        -- TODO: GetChatModule() isn't real
-        AshitaCore:GetChatManager():QueueCommand('/mount '..MountList[mountId].en, 1)
+        s = filter_name(MountList[mountId].en)
+        AshitaCore:GetChatManager():QueueCommand('/mount "'..s..'"', 1)
     else
         -- Notify the player that they have no mounts
         print("You have no mounts.")
     end
+end
+
+function filter_name(s)
+    s, _ = string.gsub(s, '♪', '')
+    s, _ = string.gsub(s, ' companion', '')
+    s, _ = string.gsub(s, ' whistle', '')
+    return s
 end
 
 initialize_myMounts()

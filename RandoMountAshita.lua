@@ -47,7 +47,7 @@ function filter_name(name)
     return s
 end
 
-initialize_myMounts()
+ashita.register_event('load', initialize_myMounts)
 
 -- Register a command to summon a random mount
 ashita.register_event("command", function(cmd, ntype)

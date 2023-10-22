@@ -10,6 +10,13 @@ MountList = require('mounts')
 function initialize_myMounts()
     
     math.randomseed(os.time())
+    math.random()
+    math.random()
+    math.random()
+    math.random()
+    math.random()
+    math.random()
+    math.random()
 
 end
 
@@ -31,7 +38,7 @@ function SummonRandomMount()
         local mountId = mounts[mountIndex]
 
         -- Summon the mount
-       local s = filter_name(MountList[mountId].en)
+        local s = filter_name(MountList[mountId].en)
         AshitaCore:GetChatManager():QueueCommand('/mount "'..s..'"', 1)
     else
         -- Notify the player that they have no mounts

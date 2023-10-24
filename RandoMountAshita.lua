@@ -7,7 +7,15 @@ _addon.version  = '1.0.0';
 
 MountList = require('mounts')
 
+mounts = {}
+
 function initialize_myMounts()
+    
+    for _, key_item in pairs(MountList) do
+        if AshitaCore:GetDataManager():GetPlayer():HasKeyItem(key_item.id) then
+            table.insert(mounts, key_item.id)
+        end
+    end
     
     math.randomseed(os.time())
     math.random()
@@ -17,20 +25,10 @@ function initialize_myMounts()
     math.random()
     math.random()
     math.random()
-
 end
 
 -- Define a function to pick a random mount and summon it
 function SummonRandomMount()
-    -- Initialize an empty table to store the player's mounts
-    local mounts = {}
-
-    for _, key_item in pairs(MountList) do
-        if AshitaCore:GetDataManager():GetPlayer():HasKeyItem(key_item.id) then
-            table.insert(mounts, key_item.id)
-        end
-    end
-
     -- Check if the player has any mounts
     if (#mounts > 0) then
         -- Select a random mount from the table

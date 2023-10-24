@@ -16,15 +16,9 @@ function initialize_myMounts()
             table.insert(mounts, key_item.id)
         end
     end
-    
-    math.randomseed(os.time())
-    math.random()
-    math.random()
-    math.random()
-    math.random()
-    math.random()
-    math.random()
-    math.random()
+
+    local seed = tonumber(string.sub(string.reverse(tostring(os.time())),1,5))
+    math.randomseed(seed)
 end
 
 -- Define a function to pick a random mount and summon it
